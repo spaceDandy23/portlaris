@@ -1,5 +1,45 @@
+
+p {
+
+  font-family: 'InterRegular';
+  margin: 0;
+  color:dimgray;
+
+}
 body {
   margin: 0;
-  font-family: 'Arial'
+  font-family: 'InterBold';
+}
+h1 {
+  margin: 0px;
 }
 
+h2 {
+  margin: 0px;
+}
+h4 {
+  margin: 0px;
+}
+h5 {
+  margin: 0px;
+}
+
+
+@font-face {
+  font-family: 'InterBold';
+  src: url('./assets/fonts/Inter_18pt-Bold.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'InterLight';
+  src: url('./assets/fonts/Inter_18pt-Light.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'InterRegular';
+  src: url('./assets/fonts/Inter_18pt-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}

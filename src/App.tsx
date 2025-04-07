@@ -1,6 +1,10 @@
-import React from 'react';
-
+import Introduction from './components/Introduction';
+import About from './components/About';
+import Timeline from './components/Timeline';
 import './App.css';
+import Skills from './components/Skills';
+import MyProjects from './components/MyProjects';
+
 
 function App() {
   return (
@@ -9,22 +13,16 @@ function App() {
 
       </div>
       <div className="section">
-        <div className="introduction">
-        introduction
-        </div>
-        <div className="about">
-        about
-        </div>
-        <div className="work-experience">
-        work-experience
-        </div>
-        <div className="education">
-        education
-        </div>        
+        <Introduction/>
+        <About/>
+        <Timeline/>     
+        <Skills/> 
+        <MyProjects/>
       </div>
       <div className="section">
 
       </div>
+
     </div>
   );
 }

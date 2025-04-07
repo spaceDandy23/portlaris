@@ -1,18 +1,13 @@
 .App {
-  height: 100vh;
+  height: auto;
   display: grid;
-  grid-template-columns: 1fr 3fr 1fr;
+  grid-template-columns: 1fr 2fr 1fr;
 }
-
 
 
 .section {
   display: grid;
   margin: 15px;
   border-radius: 2%;
-  background-color: rgb(255, 0, 0);
 }
 
-.introduction {
-  background-color: aquamarine;
-}
