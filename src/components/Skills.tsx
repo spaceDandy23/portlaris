@@ -1,12 +1,14 @@
 import { useState, useEffect } from "react";
 
-const Skills = () => {
-    const [visible, setVisible] = useState(false);
+const Skills = ({ isVisible }: { isVisible: boolean }) => {
+    const [visible, setVisible] = useState(false)
 
     useEffect(() => {
-        const timeout = setTimeout(() => setVisible(true), 100);
-        return () => clearTimeout(timeout);
-    }, []);
+        if (isVisible) {
+            const timeout = setTimeout(() => setVisible(true), 100);
+            return () => clearTimeout(timeout);
+        }
+    }, [isVisible])
 
     const skills = [
         "HTML", "CSS", "Javascript", "React", "React Native",
@@ -15,7 +17,8 @@ const Skills = () => {
     ];
 
     return (
-        <div>
+
+            <div>
             <h2 style={{ 
                 marginBottom: 12,
                 opacity: visible ? 1 : 0,
@@ -35,13 +38,15 @@ const Skills = () => {
                             transform: visible ? 'translateY(0)' : 'translateY(20px)',
                             transition: `opacity 0.6s ease ${i * 0.1}s, transform 0.6s ease ${i * 0.1}s`,
                         }}
-                    >
+                        >
                         <h5 style={{ color: 'white' }}>{v}</h5>
                     </div>
                 ))}
             </div>
         </div>
-    );
+
+
+    )
 };
 
 export default Skills;

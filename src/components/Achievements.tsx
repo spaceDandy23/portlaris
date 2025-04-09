@@ -8,18 +8,22 @@ type AchievementsProp = {
     org: string,
     dateIssued: string,
     imgSource: string,
-    sec?: string
+    sec?: string,
+    isVisible?: boolean,
 }
-const Achievements = () => {
+const Achievements = ({ isVisible }: { isVisible: boolean }) => {
     const [visible, setVisible] = useState(false)
+
         useEffect(() => {
+            if(isVisible){
             let time = setTimeout(() => {
                 setVisible(true)
             }, 100)
-    
-            return () => clearInterval(time)
-        }, [])
-    
+            
+                return () => clearInterval(time)
+            }
+        }, [isVisible])
+        
 
 
     const achievements: AchievementsProp[] = [
@@ -77,7 +81,7 @@ const Achievements = () => {
         {
             achievements.map((v, i) => (
                 
-                <CardAchievements title={v.title} org={v.org} dateIssued={v.dateIssued} imgSource={v.imgSource} sec={`${i * 0.1}s`}/>
+                <CardAchievements title={v.title} org={v.org} dateIssued={v.dateIssued} imgSource={v.imgSource} sec={`${i * 0.1}s`} isVisible={isVisible} />
             ))
         }
     </div>
@@ -87,15 +91,20 @@ const Achievements = () => {
 
 }
 
-const CardAchievements = ({title, org, dateIssued, imgSource, sec }: AchievementsProp ) => {
+const CardAchievements = ({title, org, dateIssued, imgSource, sec, isVisible }: AchievementsProp ) => {
     const [visible, setVisible] = useState(false)
     useEffect(() => {
-        let time = setTimeout(() => {
-            setVisible(true)
-        }, 100)
+        if(isVisible){
+            let time = setTimeout(() => {
+                setVisible(true)
+            }, 100)
 
-        return () => clearInterval(time)
-    }, [])
+            return () => clearInterval(time)
+        }
+
+
+
+    }, [isVisible])
 
 
     return (

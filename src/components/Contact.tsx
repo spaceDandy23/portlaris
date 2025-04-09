@@ -1,20 +1,24 @@
 import { useEffect, useState } from 'react';
 
 
-const Contact = () => {
-    const [visible, setVisible] = useState(false);
-    
+const Contact = ({ isVisible }: { isVisible: boolean }) => {
+    const [visible, setVisible] = useState(false)
     useEffect(() => {
-      const timeout = setTimeout(() => setVisible(true), 100)
-      return () => clearTimeout(timeout)
-    }, [])
+        if(isVisible){
+            let time = setTimeout(() => {
+                setVisible(true)
+            }, 100)
 
+            return () => clearInterval(time)
+        }
+        }
+    )
     return (
         <div style={{ 
             display: 'flex', 
             flexDirection: 'column', 
             alignItems: 'center', 
-            marginBottom: 40 }}>
+            marginBottom: 90 }}>
             <h3 style={{ backgroundColor: 'black', color: "white", padding:"6px 8px 6px 8px", borderRadius: 6, margin: 30, background: 'linear-gradient(to right,rgb(193, 193, 193),rgb(14, 7, 3)',
                         opacity: visible ? 1 : 0,
                         transform: visible ? 'translateY(0)' : 'translateY(40px)',

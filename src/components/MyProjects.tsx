@@ -45,18 +45,20 @@ type CardProp = {
     sec?: string
 }
 
-const MyProjects = () => {
+const MyProjects = ({ isVisible }: { isVisible: boolean }) => {
 
     const [visible, setVisible] = useState(false)
     const [developed, setDeveloped] = useState<boolean>(true)
 
     useEffect(() => {
+        if(isVisible){
         let time = setTimeout(() => {
             setVisible(true)
         }, 100)
-
-        return () => clearInterval(time)
-    }, [])
+        
+            return () => clearInterval(time)
+        }
+    }, [isVisible])
 
     const cardsDeveloped: CardProp[] = [
         {
@@ -116,6 +118,7 @@ const MyProjects = () => {
 
     return (
         <>
+    
             <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', marginBottom: 40 }}>
                 <h3 style={{ backgroundColor: 'black', color: "white", padding: "6px 8px 6px 8px", borderRadius: 6, margin: 30, background: 'linear-gradient(to right,rgb(119, 119, 119),rgb(14, 7, 3)', opacity: visible ? 1 : 0, transform: visible ? 'translateY(0)' : 'translateY(40px)', transition: 'opacity 0.6s ease, transform 0.6s ease' }}>My projects</h3>
                 <h1 style={{ fontSize: 48, opacity: visible ? 1 : 0, transform: visible ? 'translateY(0)' : 'translateY(40px)', transition: 'opacity 0.6s ease 0.2s, transform 0.6s ease' }}>My latest projects</h1>
@@ -147,11 +150,15 @@ const MyProjects = () => {
                             sourceLink={v.sourceLink}
                             description={v.description}
                             imgLink={v.imgLink}
-                            sec={`${i * 0.1}s`}
+                            sec={`${i * 0.1}s`
+                            }
                         />
                     ))
                 }
             </div>
+
+        
+
         </>
     )
 }
