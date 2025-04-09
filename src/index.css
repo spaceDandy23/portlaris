@@ -1,10 +1,8 @@
 
 p {
-
   font-family: 'InterRegular';
   margin: 0;
   color:dimgray;
-
 }
 body {
   margin: 0;
@@ -15,6 +13,9 @@ h1 {
 }
 
 h2 {
+  margin: 0px;
+}
+h3 {
   margin: 0px;
 }
 h4 {

@@ -4,6 +4,8 @@ import Timeline from './components/Timeline';
 import './App.css';
 import Skills from './components/Skills';
 import MyProjects from './components/MyProjects';
+import Achievements from './components/Achievements';
+import Contact from './components/Contact';
 
 
 function App() {
@@ -18,6 +20,8 @@ function App() {
         <Timeline/>     
         <Skills/> 
         <MyProjects/>
+        <Achievements/>
+        <Contact/>
       </div>
       <div className="section">
 

@@ -71,7 +71,7 @@ const Timeline = () => {
         },
         {
             imageSource: bsu,
-            workPlaceName: "Center for Events and Training Innovation",
+            workPlaceName: "Benguet State University",
             fromMonth: "Jan",
             fromYear: "2025",
             toMonth: "Apr",
@@ -99,7 +99,7 @@ const Timeline = () => {
                     <h4>{v.workPlaceName}</h4>
                     <p style={{ fontSize: 12 }}>{v.role}</p>
                 </div>
-                <div style={{ flex: 1/2, paddingLeft: 12 }}>
+                <div style={{ display: "flex",flex: 1/2, paddingLeft: 12, justifyContent: 'end' }}>
                     <p>{`${v.fromMonth} ${v.fromYear} - ${v.toMonth} ${v.toYear}`}</p>
                 </div>
             </div>
@@ -123,7 +123,7 @@ const Timeline = () => {
                     <h4>{v.school}</h4>
                     <p style={{ fontSize: 12 }}>{v.role}</p>
                 </div>
-                <div style={{ flex: 1/2, paddingLeft: 12 }}>
+                <div style={{ display: "flex", flex: 1/2, paddingLeft: 12, justifyContent: "end" }}>
                     <p>{`${v.fromMonth} ${v.fromYear} - ${v.toMonth === undefined && v.toYear === undefined ? 'Present' : `${v.toMonth} -  ${v.toYear}`}`}</p>
                 </div>
             </div>
