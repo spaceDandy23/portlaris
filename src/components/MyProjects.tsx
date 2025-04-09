@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import github from '../assets/images/github_logo.png'
 import instagram from '../assets/images/instagram_logo.png'
 import simonAndBetty from '../assets/images/simon_and_betty.jpg'
@@ -8,9 +8,7 @@ import fallenAngels from '../assets/images/fallen_angels.jpg'
 import bsu from '../assets/images/bsu_logo_white_bg.jpg'
 import eabono from '../assets/images/eabono_logo.png'
 
-
 const styles = {
-
     button: { 
         margin: 4,
         backgroundColor: 'white', 
@@ -34,26 +32,31 @@ const styles = {
         cursor: "pointer",
         backgroundColor: '#e3e3e3'
     }
-    
 }
-type CardProp = {
 
+type CardProp = {
     imgSource?: string,
     title: string,
     yearMade: string,
     techStack?: string[],
     sourceLink?: string,
     imgLink: string,
-    description: string
-
+    description: string,
+    sec?: string
 }
-
-
 
 const MyProjects = () => {
 
-
+    const [visible, setVisible] = useState(false)
     const [developed, setDeveloped] = useState<boolean>(true)
+
+    useEffect(() => {
+        let time = setTimeout(() => {
+            setVisible(true)
+        }, 100)
+
+        return () => clearInterval(time)
+    }, [])
 
     const cardsDeveloped: CardProp[] = [
         {
@@ -77,7 +80,6 @@ const MyProjects = () => {
     ]
 
     const cardsVideos: CardProp[] = [
-        
         {
             imgSource: hatsuneMiku,
             title: "Hatsune Miku",
@@ -109,125 +111,118 @@ const MyProjects = () => {
             sourceLink: "https://www.instagram.com/p/CvEYgaiybn4/?img_index=1",
             imgLink: instagram,
             description: "Best wong kar wai film I've ever watched"
-        },
-
-
+        }
     ]
 
     return (
         <>
-        <div style={{ 
-            display: 'flex', 
-            flexDirection: 'column', 
-            alignItems: 'center', 
-            marginBottom: 40 }}>
-            <h3 style={{ backgroundColor: 'black', color: "white", padding:"6px 8px 6px 8px", borderRadius: 6, margin: 30, background: 'linear-gradient(to right,rgb(119, 119, 119),rgb(14, 7, 3)'}}>My projects</h3>
-            <h1 style={{ fontSize: 48,  }}>My latest projects</h1>
-            <p style = {{ fontSize: 18}}>
-                Coding projects I've made, also videos I've edited. Stuff like backend systems, mobile apps. 
-                On the videos, some were commissions, and others were personal AMVs I made just for fun.
-            </p>
-        </div>
-        <div style={{display: 'flex', flexDirection: 'row', justifyContent: 'space-evenly', alignItems: 'center', borderRadius: 4, backgroundColor: '#e3e3e3', marginBottom: 40}}>
-            <button onClick={() => {
-                setDeveloped(true)
-            }} style={developed ? styles.button : styles.notClicked}>
-                <h3>Developed</h3>
-            </button>
-            <button onClick={() => {
-                setDeveloped(false)
-            }} style={developed ? styles.notClicked : styles.button}>
-                <h3>Videos</h3>
-            </button>
-        </div>
-        {
-            developed ? (
-                <div style={{display: 'flex',  borderRadius: 4, backgroundColor: '#e3e3e3', flexWrap: 'wrap'}}>
+            <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', marginBottom: 40 }}>
+                <h3 style={{ backgroundColor: 'black', color: "white", padding: "6px 8px 6px 8px", borderRadius: 6, margin: 30, background: 'linear-gradient(to right,rgb(119, 119, 119),rgb(14, 7, 3)', opacity: visible ? 1 : 0, transform: visible ? 'translateY(0)' : 'translateY(40px)', transition: 'opacity 0.6s ease, transform 0.6s ease' }}>My projects</h3>
+                <h1 style={{ fontSize: 48, opacity: visible ? 1 : 0, transform: visible ? 'translateY(0)' : 'translateY(40px)', transition: 'opacity 0.6s ease 0.2s, transform 0.6s ease' }}>My latest projects</h1>
+                <p style={{ fontSize: 18, opacity: visible ? 1 : 0, transform: visible ? 'translateY(0)' : 'translateY(40px)', transition: 'opacity 0.6s ease 0.3s, transform 0.6s ease' }}>
+                    Coding projects I've made, also videos I've edited. Stuff like backend systems, mobile apps. On the videos, some were commissions, and others were personal AMVs I made just for fun.
+                </p>
+            </div>
+            <div style={{
+                display: 'flex', flexDirection: 'row', justifyContent: 'space-evenly', alignItems: 'center', borderRadius: 4, backgroundColor: '#e3e3e3', marginBottom: 40,
+                opacity: visible ? 1 : 0, transform: visible ? 'translateY(0)' : 'translateY(40px)', transition: 'opacity 0.6s ease 0.3s, transform 0.6s ease'
+            }}>
+                <button onClick={() => setDeveloped(prev => !prev)} style={developed ? styles.button : styles.notClicked}>
+                    <h3>Developed</h3>
+                </button>
+                <button onClick={() => setDeveloped(prev => !prev)} style={!developed ? styles.button : styles.notClicked}>
+                    <h3>Videos</h3>
+                </button>
+            </div>
+            <div key={developed.toString()} style={{ display: 'flex', flexDirection: 'row', flexWrap: 'wrap', justifyContent: 'space-evenly', backgroundColor: '#e3e3e3',
+                                opacity: visible ? 1 : 0, transform: visible ? 'translateY(0)' : 'translateY(40px)', transition: 'opacity 0.6s ease 0.1s, transform 0.6s ease'
+             }}>
                 {
-
-                    cardsDeveloped.map((v) => (
-                        
-                        <CardComponent imgSource={v.imgSource} title={v.title} yearMade={v.yearMade} techStack={v.techStack} sourceLink={v.sourceLink} description={v.description} imgLink={v.imgLink}/>
+                    (developed ? cardsDeveloped : cardsVideos).map((v, i) => (
+                        <CardComponent
+                            imgSource={v.imgSource}
+                            title={v.title}
+                            yearMade={v.yearMade}
+                            techStack={v.techStack}
+                            sourceLink={v.sourceLink}
+                            description={v.description}
+                            imgLink={v.imgLink}
+                            sec={`${i * 0.1}s`}
+                        />
                     ))
                 }
-                </div>
-            ) : (
-                <div style={{display: 'flex',borderRadius: 4, backgroundColor: '#e3e3e3', flexWrap: 'wrap'}}>
-                {
-                        cardsVideos.map((v) => (
-                        <CardComponent imgSource={v.imgSource} title={v.title} yearMade={v.yearMade} sourceLink={v.sourceLink} description={v.description} imgLink={v.imgLink}/>
-                    ))
-                }
-                </div>
-            )
-        }
-
+            </div>
         </>
     )
 }
 
-const CardComponent = ({ imgSource, title, yearMade,techStack,sourceLink,description, imgLink} : CardProp) => {
+const CardComponent = ({ imgSource, title, yearMade, techStack, sourceLink, description, imgLink, sec }: CardProp) => {
+    const [visible, setVisible] = useState(false)
 
+    useEffect(() => {
+        let time = setTimeout(() => {
+            setVisible(true)
+        }, 100)
+        return () => clearInterval(time)
+    }, [])
 
-
-    return  (
-        
-        <div style={{height: 480,width: "calc(50% - 12px)", backgroundColor: 'white', borderRadius: 4, margin: 6}}>
+    return (
+        <div style={{
+            height: 480,
+            width: "calc(50% - 12px)", backgroundColor: 'white', borderRadius: 4, margin: 6,
+            opacity: visible ? 1 : 0,
+            transform: visible ? 'translateY(0) scale(1)' : 'translateY(20px) scale(0.8)',
+            transition: `opacity 0.6s ease ${sec}, transform 0.6s ease`
+        }}>
             {
                 imgSource ? (
                     <>
-                    {
-                        !techStack ? (
-                            <a href={sourceLink}><img src={imgSource} alt={description} style={{ height: 240, width: "100%", borderTopLeftRadius: 4, borderTopRightRadius: 4 }}/></a>
+                        {techStack ? (
+                            <img src={imgSource} alt={description} style={{ height: 240, width: "100%", borderTopLeftRadius: 4, borderTopRightRadius: 4 }} />
                         ) : (
-                            <img src={imgSource} alt={description} style={{ height: 240, width: "100%", borderTopLeftRadius: 4, borderTopRightRadius: 4}}/>
-                        )
-                    }
+                            <a href={sourceLink}><img src={imgSource} alt={description} style={{ height: 240, width: "100%", borderTopLeftRadius: 4, borderTopRightRadius: 4 }} /></a>
+                        )}
                     </>
                 ) : (
-                    <div style={{ backgroundColor: 'grey', height: 240, borderTopLeftRadius: 4, borderTopRightRadius: 4}}></div>
+                    <div style={{ backgroundColor: 'grey', height: 240, borderTopLeftRadius: 4, borderTopRightRadius: 4 }}></div>
                 )
             }
             <div style={{ padding: 4 }}>
                 <h4 style={{ margin: 6 }}>{title}</h4>
                 <h5 style={{ margin: 6 }}>{yearMade}</h5>
-                <p style={{ fontSize: 14, margin: 6, height: 60}}>{description}</p>
-                {
-                    techStack ? ( 
+                <p style={{ fontSize: 14, margin: 6, height: 60 }}>{description}</p>
+                {techStack ? (
                     <>
-                    <div style={{ height: 70}}>
-                        <div style={{ display: 'flex', flexWrap: 'wrap' }}>
-                            {
-                                techStack?.map((v) => (
+                        <div style={{ height: 70 }}>
+                            <div style={{ display: 'flex', flexWrap: 'wrap' }}>
+                                {techStack.map((v) => (
                                     <h4 style={{ fontSize: 12, display: 'inline-block', color: 'black', backgroundColor: '#e3e3e3', padding: 6, margin: 3, borderRadius: 4, textWrap: 'pretty' }}>{v}</h4>
-                                ))
-                            }
+                                ))}
+                            </div>
                         </div>
-                    </div>
-                    <a href={sourceLink} 
-                        style={{    
-                            margin: 3, 
-                            padding: 6, 
-                            width: 60, 
-                            height: 15, 
-                            display:'flex', 
-                            background: 'black', 
-                            alignItems: 'center', 
-                            justifyContent: 'space-between', 
-                            borderRadius: 4,
-                            marginTop: 'auto',
-                            textDecoration: 'none'}}>
-                        <img src={imgLink} alt="Icon"  style={{ width: 15, height: 15 }}/>
-                        <h4 style={{ fontSize: 12, color: 'white' }}>Source</h4>
-                    </a> 
+                        <a href={sourceLink}
+                            style={{
+                                margin: 3,
+                                padding: 6,
+                                width: 60,
+                                height: 15,
+                                display: 'flex',
+                                background: 'black',
+                                alignItems: 'center',
+                                justifyContent: 'space-between',
+                                borderRadius: 4,
+                                marginTop: 'auto',
+                                textDecoration: 'none'
+                            }}>
+                            <img src={imgLink} alt="Icon" style={{ width: 15, height: 15 }} />
+                            <h4 style={{ fontSize: 14, color: 'white' }}>GitHub</h4>
+                        </a>
                     </>
-                    ) : (
+                ) : (
                     <div/>
-                    )
-                }
+                )}
             </div>
         </div>
-
     )
 }
 
