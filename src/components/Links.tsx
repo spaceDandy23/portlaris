@@ -20,7 +20,7 @@ const Links = () => {
             position: 'fixed', 
             zIndex: 1, 
             backgroundColor: 'red', 
-            width: '20%', 
+            width: 300, 
             height: 60, 
             display:'flex', 
             justifyContent: 'space-evenly', 
