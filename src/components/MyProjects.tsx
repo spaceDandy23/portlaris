@@ -50,13 +50,21 @@ const MyProjects = ({ isVisible }: { isVisible: boolean }) => {
     const [visible, setVisible] = useState(false)
     const [developed, setDeveloped] = useState<boolean>(true)
 
+
     useEffect(() => {
+
+
+
         if(isVisible){
         let time = setTimeout(() => {
             setVisible(true)
         }, 100)
         
-            return () => clearInterval(time)
+            return () => {
+                clearInterval(time)
+
+            }
+            
         }
     }, [isVisible])
 
@@ -137,7 +145,7 @@ const MyProjects = ({ isVisible }: { isVisible: boolean }) => {
                     <h3>Videos</h3>
                 </button>
             </div>
-            <div key={developed.toString()} style={{ display: 'flex', flexDirection: 'row', flexWrap: 'wrap', justifyContent: 'space-evenly', backgroundColor: '#e3e3e3',
+            <div key={developed.toString()} style={{ display: 'flex', flexWrap: 'wrap', backgroundColor: '#e3e3e3',
                                 opacity: visible ? 1 : 0, transform: visible ? 'translateY(0)' : 'translateY(40px)', transition: 'opacity 0.6s ease 0.1s, transform 0.6s ease'
              }}>
                 {
@@ -164,19 +172,34 @@ const MyProjects = ({ isVisible }: { isVisible: boolean }) => {
 }
 
 const CardComponent = ({ imgSource, title, yearMade, techStack, sourceLink, description, imgLink, sec }: CardProp) => {
-    const [visible, setVisible] = useState(false)
 
+    const [visible, setVisible] = useState(false)
+    const [cardWidth, setCardWidth] = useState('calc(50% - 12px)')
     useEffect(() => {
+        const handleResize = () => {
+            if (window.innerWidth < 1230) {
+                setCardWidth('100%')
+            } else {
+                setCardWidth('calc(50% - 12px)')
+            }
+        }
+
+        handleResize()
+ 
+        window.addEventListener('resize', handleResize)
         let time = setTimeout(() => {
             setVisible(true)
         }, 100)
-        return () => clearInterval(time)
+        return () => {
+            clearInterval(time)
+            window.removeEventListener('resize', handleResize)
+        }
     }, [])
 
     return (
         <div style={{
             height: 480,
-            width: "calc(50% - 12px)", backgroundColor: 'white', borderRadius: 4, margin: 6,
+            width: cardWidth, backgroundColor: 'white', borderRadius: 4, margin: 6,
             opacity: visible ? 1 : 0,
             transform: visible ? 'translateY(0) scale(1)' : 'translateY(20px) scale(0.8)',
             transition: `opacity 0.6s ease ${sec}, transform 0.6s ease`

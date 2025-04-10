@@ -92,14 +92,34 @@ const Achievements = ({ isVisible }: { isVisible: boolean }) => {
 }
 
 const CardAchievements = ({title, org, dateIssued, imgSource, sec, isVisible }: AchievementsProp ) => {
+    const [cardWidth, setCardWidth] = useState('calc(33% - 12px)')
     const [visible, setVisible] = useState(false)
     useEffect(() => {
+
+
+        const handleResize = () => {
+            if (window.innerWidth < 1230) {
+                setCardWidth('100%')
+            } else {
+                setCardWidth('calc(33% - 12px)')
+            }
+        }
+
+
+        handleResize()
+ 
+        window.addEventListener('resize', handleResize)
+
+
         if(isVisible){
             let time = setTimeout(() => {
                 setVisible(true)
             }, 100)
 
-            return () => clearInterval(time)
+            return () => {
+                clearInterval(time)
+                window.removeEventListener('resize', handleResize)
+            }
         }
 
 
@@ -109,7 +129,7 @@ const CardAchievements = ({title, org, dateIssued, imgSource, sec, isVisible }: 
 
     return (
         <div style={{
-            width: "calc(33% - 12px)", 
+            width: cardWidth, 
             borderRadius: 4, 
             margin: 6, 
             display: 'flex', 
