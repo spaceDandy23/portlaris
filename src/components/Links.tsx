@@ -24,12 +24,26 @@ const Links = () => {
 
 
         const handleResize = () => {
-            if (window.innerWidth < 500) {
-                setLeft('10%')
+            if (window.innerWidth < 450) {
+                setLeft('15%')
             } 
-            
-            else if (window.innerWidth < 1000){
+            else if (window.innerWidth < 650){
+                setLeft('24%')
+            }
+            else if (window.innerWidth < 700){
+                setLeft('27%')
+            }
+            else if (window.innerWidth < 730){
+                setLeft('29%')
+            }
+            else if (window.innerWidth < 750){
+                setLeft('29%')
+            }
+            else if (window.innerWidth < 900){
                 setLeft('30%')
+            }
+            else if (window.innerWidth < 1200){
+                setLeft('35%')
             }
             
             else {
