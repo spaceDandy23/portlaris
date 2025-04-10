@@ -2,9 +2,11 @@ import github from '../assets/images/github_logo_black.png'
 import instagram from '../assets/images/instagram_logo.png'
 import linkedin from '../assets/images/linked_in_logo.png'
 import leetcode from '../assets/images/leetcode_logo.png'
+import { useState, useEffect } from 'react'
 
 
 const Links = () => {
+    const [left, setLeft] = useState('40%')
     const styles = {
 
         imageSize: {
@@ -13,6 +15,42 @@ const Links = () => {
         }
     }
     
+
+
+
+
+
+    useEffect(() => {
+
+
+        const handleResize = () => {
+            if (window.innerWidth < 500) {
+                setLeft('10%')
+            } 
+            
+            else if (window.innerWidth < 1000){
+                setLeft('30%')
+            }
+            
+            else {
+                setLeft('40%')
+            }
+        }
+
+
+        handleResize()
+        window.addEventListener('resize', handleResize)
+
+        return () => {
+            window.removeEventListener('resize', handleResize)
+        }
+    })
+
+
+
+
+
+
     
     return (
 
@@ -29,7 +67,7 @@ const Links = () => {
             background: 'white',
             boxShadow: '0 4px 8px rgba(0, 0, 0, 0.2)',
             bottom: 10,
-            left: '40%',
+            left: left,
 
             }}>
             <div className="socialIcon">
