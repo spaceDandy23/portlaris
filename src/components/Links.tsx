@@ -19,7 +19,7 @@ const Links = () => {
 
 
 
-
+    //unfortnute for position sticky :(( HJAHAHAHA
     useEffect(() => {
 
 
@@ -95,7 +95,7 @@ const Links = () => {
                 </a>
             </div>
             <div className="socialIcon">
-                <a href="">
+                <a href="https://www.linkedin.com/in/lubrica-carlos-polaris-r-74aa9429a/">
                     <img style={styles.imageSize} src={linkedin} alt="Linkedin" />
                 </a>
             </div>
