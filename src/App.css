@@ -7,8 +7,9 @@
 
 .section {
   display: grid;
-  margin: 15px;
+
   border-radius: 2%;
+
 }
 
 
