@@ -39,15 +39,15 @@ const About = () => {
         currently taking a Bachelor of Science and Technology degree program. I
         specialize in web development.&nbsp;
         <span style={styles.boldUnderline}>
-          I like coding, especially when it's about Data Structures and
-          Algorithms, this has led me to participate in programming
+          I like coding, especially when it's about, Web Development, UI design, Data Structures and
+          Algorithms. Learning DSA has led me to participate in programming
           competitions.
         </span>
-        &nbsp;In 2024, I proudly secured 1st place in two programming
-        competitions, but in 2025, I got outclassed by stronger competitors.
+        &nbsp;In 2024, I proudly secured 1st place in the programming
+        competition held in our school, but in 2025, I got outclassed by stronger competitors.
         Despite that, I continue to challenge myself by solving{' '}
         <span style={styles.boldUnderline}>LeetCode problems</span> in my spare
-        time, tryna hone my skills and preparing for future challenges.
+        time, while Im still not good at DSA, im still tryna hone my skills and now currently trying to master backtracking algorithm.
       </p>
     </div>
   );
