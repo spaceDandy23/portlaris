@@ -120,14 +120,14 @@ const Timeline = () => {
             })} 
             onMouseEnter={() => setArrowWork(i)} 
             onMouseLeave={() => setArrowWork(-1)}>
-                <img style={{ width: 42, height: 42, }} src={v.imageSource}/>
+                <img alt={`${v.workPlaceName} logo`} style={{ width: 42, height: 42, }} src={v.imageSource}/>
                 <div style={{ flex: 1, paddingLeft: 12 }}>
                     <h4>{v.workPlaceName}</h4>
                     <p style={{ fontSize: 12 }}>{v.role}</p>
                 </div>
                 {   
                     workExperienceDesc[i] ? (
-                        <img style={{ 
+                        <img alt="" style={{
                             width: 19, 
                             height: 19, 
                             opacity: arrowWork === i ? 1 : 0,
@@ -136,7 +136,7 @@ const Timeline = () => {
                             rotate: '-90deg'
                         }} src={arrowLeft}/>
                     ) : (
-                        <img style={{ 
+                        <img alt="" style={{
                             width: 19, 
                             height: 19, 
                             opacity: arrowWork === i ? 1 : 0,
@@ -187,7 +187,7 @@ const Timeline = () => {
                     newState[i] = newState[i] ? false : true
                     return newState
                 })} >
-                <img style={{ width: 42, height: 42, }} src={v.imageSource}/>
+                <img alt={`${v.school} logo`} style={{ width: 42, height: 42, }} src={v.imageSource}/>
                 <div style={{ flex: 1, paddingLeft: 12 }}>
                     <h4>{v.school}</h4>
                     <p style={{ fontSize: 12 }}>{v.role}</p>
@@ -196,7 +196,7 @@ const Timeline = () => {
                 
                 {   
                     educExperienceDesc[i] ? (
-                        <img style={{ 
+                        <img alt="" style={{
                             width: 19, 
                             height: 19, 
                             opacity: arrow === i ? 1 : 0,
@@ -205,7 +205,7 @@ const Timeline = () => {
                             rotate: '-90deg'
                         }} src={arrowLeft}/>
                     ) : (
-                        <img style={{ 
+                        <img alt="" style={{
                             width: 19, 
                             height: 19, 
                             opacity: arrow === i ? 1 : 0,

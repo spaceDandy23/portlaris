@@ -32,7 +32,7 @@ const Introduction = () => {
                         transform: visible ? 'translateY(0)' : 'translateY(50px)',
                         transition: 'opacity 0.6s ease, transform 0.6s ease'
              }}>
-                <img style={{ width: 180, height: 180, borderRadius: '10%', boxShadow: '0 4px 8px rgba(0, 0, 0, 0.2)' }} src={pfp}/>
+                <img alt="Carlos Lubrica" style={{ width: 180, height: 180, borderRadius: '10%', boxShadow: '0 4px 8px rgba(0, 0, 0, 0.2)' }} src={pfp}/>
             </div>  
         </div>
     )
