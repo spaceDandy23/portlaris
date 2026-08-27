@@ -1,15 +1,13 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
-  "redirects": [
+  "rewrites": [
     {
       "source": "/",
-      "destination": "https://carlos-creative-portfolio.carlospolarislubrica.chatgpt.site",
-      "permanent": true
+      "destination": "https://carlos-creative-portfolio.carlospolarislubrica.chatgpt.site"
     },
     {
       "source": "/:path*",
-      "destination": "https://carlos-creative-portfolio.carlospolarislubrica.chatgpt.site/:path*",
-      "permanent": true
+      "destination": "https://carlos-creative-portfolio.carlospolarislubrica.chatgpt.site/:path*"
     }
   ]
 }
