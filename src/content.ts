@@ -206,18 +206,6 @@ export const defaultPortfolioContent: PortfolioContent = {
       order: 1,
     },
     {
-      id: "fdcp-events",
-      type: "Laravel API backend",
-      title: "FDCP Events API",
-      organization: "Film Development Council of the Philippines",
-      description:
-        "Built backend foundations for events, registrations, screenings, QR credentials, and check-in flows using Laravel. The API includes mobile authentication, owner-scoped data, reusable domain services, and structured validation and exception handling.",
-      stack: ["Laravel", "PHP", "MySQL", "Sanctum", "REST APIs", "QR workflows"],
-      impact: "API DESIGN / REGISTRATION FLOWS / CHECK-IN SYSTEMS",
-      visible: true,
-      order: 2,
-    },
-    {
       id: "fdcp-grantee",
       type: "Internal Laravel system",
       title: "FDCP Grantee Database",
@@ -227,7 +215,7 @@ export const defaultPortfolioContent: PortfolioContent = {
       stack: ["Laravel", "MySQL", "OAuth2 / PKCE", "Filament", "Tailwind", "Vite"],
       impact: "INTERNAL TOOLS / SSO / DATA MANAGEMENT",
       visible: true,
-      order: 3,
+      order: 2,
     },
     {
       id: "agricultural-analysis",
@@ -239,7 +227,7 @@ export const defaultPortfolioContent: PortfolioContent = {
       stack: ["React Native", "Expo", "SQLite", "AI integration"],
       impact: "CROSS-PLATFORM PRODUCT DEVELOPMENT",
       visible: true,
-      order: 4,
+      order: 3,
     },
   ],
 };
