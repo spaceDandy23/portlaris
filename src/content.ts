@@ -57,24 +57,24 @@ export type PortfolioContent = {
 
 export const defaultPortfolioContent: PortfolioContent = {
   general: {
-    heroEyebrow: "VIDEO EDITOR & DEVELOPER\nPHILIPPINES / GMT+8",
-    heroTitleFirst: "VIDEO EDITING",
-    heroTitleSecond: "DEVELOPER",
+    heroEyebrow: "SOFTWARE DEVELOPER / VIDEO EDITOR\nPHILIPPINES / GMT+8",
+    heroTitleFirst: "SOFTWARE",
+    heroTitleSecond: "MOTION",
     heroIntro:
-      "I create rhythm-driven edits and motion graphics. I also build and maintain production mobile applications.",
-    developmentLeadFirst: "I understand how software works.",
-    developmentLeadSecond: "I use motion to show people why it matters.",
+      "I build and maintain production mobile and web applications using React Native, React, Expo, Laravel, and Supabase. I also work in video editing and motion graphics, with the same focus on clarity, polish, and shipping work that holds up in production.",
+    developmentLeadFirst: "I build products that people actually use.",
+    developmentLeadSecond: "Mobile first, with web and backend when the product needs it.",
     developmentSummary:
-      "My developer background helps me turn interfaces, features, and user flows into clear SaaS and product videos.",
-    profileStatement: "Creative judgment, backed by production engineering.",
+      "My work spans production React Native apps, React web applications, Laravel APIs, Supabase/Postgres, authentication, debugging, and release work. I am comfortable taking over existing codebases, tracing issues, and continuing development without breaking what already works.",
+    profileStatement: "Software development first. Motion and editing as a creative edge.",
     bioFirst:
-      "I'm Carlos Polaris R. Lubrica, a video editor and mobile developer based in the Philippines. I work across motion, post-production, and Android product development.",
+      "I'm Carlos Polaris R. Lubrica, a software developer based in the Philippines working primarily across mobile and web development. I currently work with React Native, Expo, React, Laravel, Firebase, and Supabase, with hands-on experience maintaining an inherited production mobile codebase and shipping Android releases.",
     bioSecond:
-      "My two disciplines are separate services, but they share the same approach: understand the audience, solve the real problem, and deliver work that holds up in production.",
-    contactLeadFirst: "LET'S WORK",
-    contactLeadSecond: "TOGETHER.",
+      "I also work in video editing and motion graphics. That background shapes how I think about interfaces, product polish, pacing, communication, and the overall feel of the things I build.",
+    contactLeadFirst: "LET'S BUILD",
+    contactLeadSecond: "SOMETHING USEFUL.",
     contactIntro:
-      "Tell me whether you need a video editor or a developer, and what you're trying to ship.",
+      "If you need help with a mobile app, web product, backend system, or video project, send me what you're trying to ship.",
     availability: "AVAILABLE FOR PROJECTS",
   },
   contact: {
@@ -92,9 +92,11 @@ export const defaultPortfolioContent: PortfolioContent = {
   ],
   developmentServices: [
     "React Native & Expo",
-    "Android Applications",
-    "Laravel & APIs",
-    "Firebase & Streaming Media",
+    "React & TypeScript",
+    "Laravel & REST APIs",
+    "Supabase / PostgreSQL / RLS",
+    "Firebase & Native Integrations",
+    "Android / Google Play",
   ],
   projects: [
     {
@@ -181,15 +183,51 @@ export const defaultPortfolioContent: PortfolioContent = {
   developmentWork: [
     {
       id: "juanflix",
-      type: "Production mobile app",
+      type: "Production React Native app",
       title: "JuanFlix for Android",
       organization: "Film Development Council of the Philippines",
       description:
-        "I maintain and extend FDCP's Philippine-cinema streaming app, including major crash fixes, video playback, offline downloads, Firebase services, Chromecast, and Android release work.",
-      stack: ["React Native", "Expo", "Firebase", "Android", "Streaming media"],
-      impact: "PRODUCTION RELIABILITY / FEATURE DELIVERY",
+        "Took over an existing production React Native codebase and now maintain the Android side of FDCP's streaming platform. My work includes production crash debugging, lifecycle issues, video playback, offline downloads, Firebase services, Chromecast, native integrations, and Android releases through Google Play.",
+      stack: ["React Native", "Expo", "TypeScript", "Firebase", "Android", "Google Play"],
+      impact: "CODEBASE TAKEOVER / PRODUCTION STABILITY / ANDROID RELEASES",
       visible: true,
       order: 0,
+    },
+    {
+      id: "altras",
+      type: "React + Supabase web app",
+      title: "ALTRAS",
+      organization: "Independent client project",
+      description:
+        "Built an online educational platform with React, TypeScript, and Supabase. Implemented authentication, PostgreSQL-backed progress tracking, Row Level Security, pre/post assessments, cross-device settings, and a protected researcher results view.",
+      stack: ["React", "TypeScript", "Supabase", "PostgreSQL", "RLS", "Vercel"],
+      impact: "AUTH / SECURE DATA ACCESS / CROSS-DEVICE PRODUCT",
+      visible: true,
+      order: 1,
+    },
+    {
+      id: "fdcp-events",
+      type: "Laravel API backend",
+      title: "FDCP Events API",
+      organization: "Film Development Council of the Philippines",
+      description:
+        "Built backend foundations for events, registrations, screenings, QR credentials, and check-in flows using Laravel. The API includes mobile authentication, owner-scoped data, reusable domain services, and structured validation and exception handling.",
+      stack: ["Laravel", "PHP", "MySQL", "Sanctum", "REST APIs", "QR workflows"],
+      impact: "API DESIGN / REGISTRATION FLOWS / CHECK-IN SYSTEMS",
+      visible: true,
+      order: 2,
+    },
+    {
+      id: "fdcp-grantee",
+      type: "Internal Laravel system",
+      title: "FDCP Grantee Database",
+      organization: "Film Development Council of the Philippines",
+      description:
+        "Developed an internal grantee directory and records system with SSO-based access, role handling, search and filtering, admin workflows, soft deletion, publication controls, and relational grant and disbursement data.",
+      stack: ["Laravel", "MySQL", "OAuth2 / PKCE", "Filament", "Tailwind", "Vite"],
+      impact: "INTERNAL TOOLS / SSO / DATA MANAGEMENT",
+      visible: true,
+      order: 3,
     },
     {
       id: "agricultural-analysis",
@@ -201,96 +239,7 @@ export const defaultPortfolioContent: PortfolioContent = {
       stack: ["React Native", "Expo", "SQLite", "AI integration"],
       impact: "CROSS-PLATFORM PRODUCT DEVELOPMENT",
       visible: true,
-      order: 1,
-    },
-    {
-      id: "rfid-attendance",
-      type: "Real-time web system",
-      title: "RFID Attendance Platform",
-      organization: "Independent academic project",
-      description:
-        "Built a real-time attendance system that records RFID scans and automatically sends SMS notifications to guardians through an integrated messaging service.",
-      stack: ["Laravel", "MariaDB", "REST APIs", "SMS integration"],
-      impact: "BACKEND / AUTOMATION / REAL-TIME DATA",
-      visible: true,
-      order: 2,
+      order: 4,
     },
   ],
 };
-
-const text = (value: unknown, fallback: string, max = 700) =>
-  typeof value === "string" ? value.trim().slice(0, max) || fallback : fallback;
-
-const stringList = (value: unknown, fallback: string[]) =>
-  Array.isArray(value)
-    ? value.filter((item): item is string => typeof item === "string").map((item) => item.trim().slice(0, 80)).filter(Boolean).slice(0, 12)
-    : fallback;
-
-const httpsUrl = (value: unknown, fallback: string) => {
-  const candidate = text(value, fallback, 300);
-  try {
-    const parsed = new URL(candidate);
-    return parsed.protocol === "https:" ? parsed.toString() : fallback;
-  } catch {
-    return fallback;
-  }
-};
-
-export function normalizePortfolioContent(value: unknown): PortfolioContent {
-  if (!value || typeof value !== "object") return defaultPortfolioContent;
-  const input = value as Partial<PortfolioContent>;
-  const general = input.general ?? ({} as Partial<PortfolioContent["general"]>);
-  const contact = input.contact ?? ({} as Partial<PortfolioContent["contact"]>);
-
-  const projectInputs = new Map(
-    (Array.isArray(input.projects) ? input.projects : []).map((project) => [project?.id, project]),
-  );
-  const devInputs = new Map(
-    (Array.isArray(input.developmentWork) ? input.developmentWork : []).map((project) => [project?.id, project]),
-  );
-
-  return {
-    general: Object.fromEntries(
-      Object.entries(defaultPortfolioContent.general).map(([key, fallback]) => [
-        key,
-        text(general[key as keyof typeof general], fallback),
-      ]),
-    ) as PortfolioContent["general"],
-    contact: {
-      email: text(contact.email, defaultPortfolioContent.contact.email, 160),
-      phoneDisplay: text(contact.phoneDisplay, defaultPortfolioContent.contact.phoneDisplay, 40),
-      phoneHref: text(contact.phoneHref, defaultPortfolioContent.contact.phoneHref, 40).replace(/[^+\d]/g, ""),
-      linkedInUrl: httpsUrl(contact.linkedInUrl, defaultPortfolioContent.contact.linkedInUrl),
-      linkedInLabel: text(contact.linkedInLabel, defaultPortfolioContent.contact.linkedInLabel, 80),
-    },
-    videoServices: stringList(input.videoServices, defaultPortfolioContent.videoServices),
-    developmentServices: stringList(input.developmentServices, defaultPortfolioContent.developmentServices),
-    projects: defaultPortfolioContent.projects.map((fallback) => {
-      const project = projectInputs.get(fallback.id);
-      return {
-        ...fallback,
-        discipline: text(project?.discipline, fallback.discipline, 80),
-        title: text(project?.title, fallback.title, 100),
-        detail: text(project?.detail, fallback.detail, 180),
-        format: text(project?.format, fallback.format, 100),
-        featured: Boolean(project?.featured),
-        visible: project?.visible !== false,
-        order: typeof project?.order === "number" ? project.order : fallback.order,
-      };
-    }),
-    developmentWork: defaultPortfolioContent.developmentWork.map((fallback) => {
-      const project = devInputs.get(fallback.id);
-      return {
-        ...fallback,
-        type: text(project?.type, fallback.type, 100),
-        title: text(project?.title, fallback.title, 120),
-        organization: text(project?.organization, fallback.organization, 160),
-        description: text(project?.description, fallback.description, 800),
-        stack: stringList(project?.stack, fallback.stack),
-        impact: text(project?.impact, fallback.impact, 120),
-        visible: project?.visible !== false,
-        order: typeof project?.order === "number" ? project.order : fallback.order,
-      };
-    }),
-  };
-}
