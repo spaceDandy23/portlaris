@@ -1,14 +1,11 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { defaultPortfolioContent, normalizePortfolioContent } from "./content";
+import { defaultPortfolioContent } from "./content";
 import "./App.css";
 
-const CMS_CONTENT_URL =
-  "https://carlos-creative-portfolio.carlospolarislubrica.chatgpt.site/api/content";
-
 export default function Home() {
-  const [content, setContent] = useState(defaultPortfolioContent);
+  const content = defaultPortfolioContent;
   const [viewerOpen, setViewerOpen] = useState(false);
   const [activeIndex, setActiveIndex] = useState(0);
   const [soundOn, setSoundOn] = useState(false);
@@ -26,18 +23,6 @@ export default function Home() {
     .filter((project) => project.visible)
     .sort((a, b) => a.order - b.order)
     .map((project, index) => ({ ...project, index: String(index + 1).padStart(2, "0") }));
-
-  useEffect(() => {
-    const controller = new AbortController();
-    void fetch(CMS_CONTENT_URL, { signal: controller.signal, cache: "no-store" })
-      .then(async (response) => {
-        if (!response.ok) throw new Error("CMS unavailable");
-        return await response.json() as { content?: unknown };
-      })
-      .then((payload) => setContent(normalizePortfolioContent(payload.content)))
-      .catch(() => undefined);
-    return () => controller.abort();
-  }, []);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -166,10 +151,10 @@ export default function Home() {
     <main id="top">
       <nav className="nav shell" aria-label="Primary navigation">
         <a className="brand" href="#top">CARLOS POLARIS R. LUBRICA</a>
-        <span className="role">VIDEO EDITOR / DEVELOPER</span>
+        <span className="role">SOFTWARE DEVELOPER / VIDEO EDITOR</span>
         <div className="navLinks">
-          <a href="#work">VIDEO</a>
           <a href="#development">DEV</a>
+          <a href="#work">VIDEO</a>
           <a href="#profile">PROFILE</a>
           <a href="#contact">CONTACT</a>
         </div>
@@ -180,13 +165,49 @@ export default function Home() {
         <h1>{content.general.heroTitleFirst}<br /><span>+</span> {content.general.heroTitleSecond}</h1>
         <div className="heroBottom">
           <p>{content.general.heroIntro}</p>
-          <a className="textLink" href="#work">VIEW VIDEO WORK <span>↘</span></a>
+          <a className="textLink" href="#development">VIEW DEVELOPMENT WORK <span>↘</span></a>
         </div>
       </header>
 
+      <section className="development" id="development">
+        <div className="shell">
+          <div className="sectionTitle developmentTitle"><span>01</span><h2>SELECTED DEVELOPMENT WORK</h2><span>MOBILE / WEB / BACKEND</span></div>
+          <div className="developmentIntro">
+            <p className="developmentLead">{content.general.developmentLeadFirst}<br />{content.general.developmentLeadSecond}</p>
+            <div className="developmentSummary">
+              <span>WHAT I DO</span>
+              <p>{content.general.developmentSummary}</p>
+            </div>
+          </div>
+
+          <div className="developmentGrid">
+            {developmentWork.map((project) => (
+              <article className="developmentCard" key={project.index}>
+                <div className="developmentMeta">
+                  <span>{project.index}</span>
+                  <span>{project.type}</span>
+                </div>
+                <h3>{project.title}</h3>
+                <p className="developmentOrg">{project.organization}</p>
+                <p className="developmentDescription">{project.description}</p>
+                <div className="stackList" aria-label={`${project.title} technologies`}>
+                  {project.stack.map((item) => <span key={item}>{item}</span>)}
+                </div>
+                <small>{project.impact}</small>
+              </article>
+            ))}
+          </div>
+
+          <div className="developerCredentials">
+            <span>BS INFORMATION TECHNOLOGY • CUM LAUDE</span>
+            <span>REACT NATIVE • EXPO • REACT • TYPESCRIPT • LARAVEL • SUPABASE</span>
+          </div>
+        </div>
+      </section>
+
       <section className="work shell" id="work">
         <div className="sectionTitle">
-          <span>01</span><h2>SELECTED VIDEO WORK</h2><span>{String(featuredProjects.length).padStart(2, "0")} FEATURED / {String(projects.length).padStart(2, "0")} TOTAL</span>
+          <span>02</span><h2>SELECTED VIDEO + MOTION WORK</h2><span>{String(featuredProjects.length).padStart(2, "0")} FEATURED / {String(projects.length).padStart(2, "0")} TOTAL</span>
         </div>
 
         <div className="previewGrid">
@@ -221,43 +242,7 @@ export default function Home() {
 
         <div className="workActions">
           <p>{featuredProjects.length} selected previews. Open the complete reel archive to browse all {projects.length}.</p>
-          <button type="button" onClick={() => openViewer(0)}>VIEW ALL WORK <span>↘</span></button>
-        </div>
-      </section>
-
-      <section className="development" id="development">
-        <div className="shell">
-          <div className="sectionTitle developmentTitle"><span>02</span><h2>DEVELOPMENT + PRODUCT MOTION</h2><span>MOBILE / WEB / SAAS</span></div>
-          <div className="developmentIntro">
-            <p className="developmentLead">{content.general.developmentLeadFirst}<br />{content.general.developmentLeadSecond}</p>
-            <div className="developmentSummary">
-              <span>WHY IT HELPS</span>
-              <p>{content.general.developmentSummary}</p>
-            </div>
-          </div>
-
-          <div className="developmentGrid">
-            {developmentWork.map((project) => (
-              <article className="developmentCard" key={project.index}>
-                <div className="developmentMeta">
-                  <span>{project.index}</span>
-                  <span>{project.type}</span>
-                </div>
-                <h3>{project.title}</h3>
-                <p className="developmentOrg">{project.organization}</p>
-                <p className="developmentDescription">{project.description}</p>
-                <div className="stackList" aria-label={`${project.title} technologies`}>
-                  {project.stack.map((item) => <span key={item}>{item}</span>)}
-                </div>
-                <small>{project.impact}</small>
-              </article>
-            ))}
-          </div>
-
-          <div className="developerCredentials">
-            <span>BS INFORMATION TECHNOLOGY • CUM LAUDE</span>
-            <span>REACT NATIVE • EXPO • LARAVEL • FIREBASE • REST APIS • MYSQL</span>
-          </div>
+          <button type="button" onClick={() => openViewer(0)}>VIEW ALL VIDEO WORK <span>↘</span></button>
         </div>
       </section>
 
@@ -273,12 +258,12 @@ export default function Home() {
           </div>
           <div className="services">
             <div className="serviceLine">
-              <strong>VIDEO PRODUCTION AND EDITING</strong>
-              {content.videoServices.map((service) => <span key={service}>{service}</span>)}
-            </div>
-            <div className="serviceLine">
               <strong>SOFTWARE DEVELOPMENT</strong>
               {content.developmentServices.map((service) => <span key={service}>{service}</span>)}
+            </div>
+            <div className="serviceLine">
+              <strong>VIDEO + MOTION</strong>
+              {content.videoServices.map((service) => <span key={service}>{service}</span>)}
             </div>
           </div>
         </div>
@@ -303,7 +288,7 @@ export default function Home() {
       {viewerOpen && (
         <div className="reelViewer" role="dialog" aria-modal="true" aria-label="All selected work">
           <div className="viewerChrome">
-            <span>CARLOS POLARIS R. LUBRICA / SELECTED WORK</span>
+            <span>CARLOS POLARIS R. LUBRICA / SELECTED VIDEO WORK</span>
             <span className="viewerCount" aria-live="polite">{String(activeIndex + 1).padStart(2, "0")} / {String(projects.length).padStart(2, "0")}</span>
             <button type="button" className="soundButton" onClick={toggleSound}>{soundOn ? "SOUND ON" : "SOUND OFF"}</button>
             <button type="button" className="closeButton" onClick={closeViewer} autoFocus>CLOSE ×</button>
