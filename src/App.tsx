@@ -149,6 +149,27 @@ export default function Home() {
 
   return (
     <main id="top">
+      <style>{`
+        @media (min-width: 761px) {
+          .serviceLine {
+            display: grid;
+            grid-template-columns: 220px minmax(0, 1fr);
+            align-items: baseline;
+          }
+          .serviceItems {
+            min-width: 0;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: baseline;
+            gap: 10px 0;
+          }
+        }
+        @media (max-width: 760px) {
+          .serviceItems {
+            display: block;
+          }
+        }
+      `}</style>
       <nav className="nav shell" aria-label="Primary navigation">
         <a className="brand" href="#top">CARLOS POLARIS R. LUBRICA</a>
         <span className="role">SOFTWARE DEVELOPER / VIDEO EDITOR</span>
@@ -259,11 +280,15 @@ export default function Home() {
           <div className="services">
             <div className="serviceLine">
               <strong>SOFTWARE DEVELOPMENT</strong>
-              {content.developmentServices.map((service) => <span key={service}>{service}</span>)}
+              <div className="serviceItems">
+                {content.developmentServices.map((service) => <span key={service}>{service}</span>)}
+              </div>
             </div>
             <div className="serviceLine">
               <strong>VIDEO + MOTION</strong>
-              {content.videoServices.map((service) => <span key={service}>{service}</span>)}
+              <div className="serviceItems">
+                {content.videoServices.map((service) => <span key={service}>{service}</span>)}
+              </div>
             </div>
           </div>
         </div>
