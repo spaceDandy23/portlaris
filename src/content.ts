@@ -187,9 +187,9 @@ export const defaultPortfolioContent: PortfolioContent = {
       title: "JuanFlix for Android",
       organization: "Film Development Council of the Philippines",
       description:
-        "Took over an existing production React Native codebase and now maintain the Android side of FDCP's streaming platform. My work includes production crash debugging, lifecycle issues, video playback, offline downloads, Firebase services, Chromecast, native integrations, and Android releases through Google Play.",
+        "Took over an existing production React Native codebase and now maintain and extend the Android side of FDCP's streaming platform. I ship new features, fix production crashes and lifecycle issues, work on video playback and offline downloads, integrate Firebase and Chromecast, handle native integrations, and manage Android releases through Google Play.",
       stack: ["React Native", "Expo", "TypeScript", "Firebase", "Android", "Google Play"],
-      impact: "CODEBASE TAKEOVER / PRODUCTION STABILITY / ANDROID RELEASES",
+      impact: "CODEBASE TAKEOVER / FEATURE DELIVERY / PRODUCTION STABILITY / ANDROID RELEASES",
       visible: true,
       order: 0,
     },
@@ -206,30 +206,6 @@ export const defaultPortfolioContent: PortfolioContent = {
       order: 1,
     },
     {
-      id: "fdcp-events",
-      type: "Laravel API backend",
-      title: "FDCP Events API",
-      organization: "Film Development Council of the Philippines",
-      description:
-        "Built backend foundations for events, registrations, screenings, QR credentials, and check-in flows using Laravel. The API includes mobile authentication, owner-scoped data, reusable domain services, and structured validation and exception handling.",
-      stack: ["Laravel", "PHP", "MySQL", "Sanctum", "REST APIs", "QR workflows"],
-      impact: "API DESIGN / REGISTRATION FLOWS / CHECK-IN SYSTEMS",
-      visible: true,
-      order: 2,
-    },
-    {
-      id: "fdcp-grantee",
-      type: "Internal Laravel system",
-      title: "FDCP Grantee Database",
-      organization: "Film Development Council of the Philippines",
-      description:
-        "Developed an internal grantee directory and records system with SSO-based access, role handling, search and filtering, admin workflows, soft deletion, publication controls, and relational grant and disbursement data.",
-      stack: ["Laravel", "MySQL", "OAuth2 / PKCE", "Filament", "Tailwind", "Vite"],
-      impact: "INTERNAL TOOLS / SSO / DATA MANAGEMENT",
-      visible: true,
-      order: 3,
-    },
-    {
       id: "agricultural-analysis",
       type: "AI-integrated mobile app",
       title: "Agricultural Analysis App",
@@ -239,7 +215,19 @@ export const defaultPortfolioContent: PortfolioContent = {
       stack: ["React Native", "Expo", "SQLite", "AI integration"],
       impact: "CROSS-PLATFORM PRODUCT DEVELOPMENT",
       visible: true,
-      order: 4,
+      order: 2,
+    },
+    {
+      id: "rfid-attendance",
+      type: "Real-time web system",
+      title: "RFID Attendance Platform",
+      organization: "Independent academic project",
+      description:
+        "Built a real-time attendance system that records RFID scans and automatically sends SMS notifications to guardians through an integrated messaging service.",
+      stack: ["Laravel", "MariaDB", "REST APIs", "SMS integration"],
+      impact: "BACKEND / AUTOMATION / REAL-TIME DATA",
+      visible: true,
+      order: 3,
     },
   ],
 };
