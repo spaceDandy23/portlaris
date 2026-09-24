@@ -218,6 +218,18 @@ export const defaultPortfolioContent: PortfolioContent = {
       order: 2,
     },
     {
+      id: "it-equipment-borrowing",
+      type: "Internal QR-based web system",
+      title: "IT Equipment Borrowing System",
+      organization: "Film Development Council of the Philippines",
+      description:
+        "Built an internal QR-based equipment borrowing system with Laravel and Livewire. Implemented SSO-based access, employee borrowing flows, admin approvals and cancellations, equipment status transitions, audit logs, notifications, return tracking, and protections against duplicate or invalid requests.",
+      stack: ["Laravel", "Livewire", "MySQL", "SSO", "QR workflow"],
+      impact: "INTERNAL OPERATIONS / REQUEST LIFECYCLE / AUDITABILITY",
+      visible: true,
+      order: 3,
+    },
+    {
       id: "rfid-attendance",
       type: "Real-time web system",
       title: "RFID Attendance Platform",
@@ -227,7 +239,7 @@ export const defaultPortfolioContent: PortfolioContent = {
       stack: ["Laravel", "MariaDB", "REST APIs", "SMS integration"],
       impact: "BACKEND / AUTOMATION / REAL-TIME DATA",
       visible: true,
-      order: 3,
+      order: 4,
     },
   ],
 };
