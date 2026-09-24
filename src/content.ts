@@ -62,8 +62,8 @@ export const defaultPortfolioContent: PortfolioContent = {
     heroTitleSecond: "MOTION",
     heroIntro:
       "I build and maintain production mobile and web applications using React Native, React, Expo, Laravel, and Supabase. I also work in video editing and motion graphics, with the same focus on clarity, polish, and shipping work that holds up in production.",
-    developmentLeadFirst: "I build products that people actually use.",
-    developmentLeadSecond: "Mobile first, with web and backend when the product needs it.",
+    developmentLeadFirst: "I build software people actually use.",
+    developmentLeadSecond: "From mobile apps to web platforms and backend systems.",
     developmentSummary:
       "My work spans production React Native apps, React web applications, Laravel APIs, Supabase/Postgres, authentication, debugging, and release work. I am comfortable taking over existing codebases, tracing issues, and continuing development without breaking what already works.",
     profileStatement: "Software development first. Motion and editing as a creative edge.",
