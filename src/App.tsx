@@ -215,6 +215,30 @@ export default function Home() {
                   {project.stack.map((item) => <span key={item}>{item}</span>)}
                 </div>
                 <small>{project.impact}</small>
+                {project.id === "juanflix" && (
+                  <a
+                    className="textLink"
+                    style={{ alignSelf: "flex-start", marginTop: "18px" }}
+                    href="https://play.google.com/store/apps/details?id=com.fdcp.juanflix"
+                    target="_blank"
+                    rel="noreferrer"
+                    aria-label="View JuanFlix on Google Play"
+                  >
+                    VIEW ON GOOGLE PLAY <span>↗</span>
+                  </a>
+                )}
+                {project.id === "altras" && (
+                  <a
+                    className="textLink"
+                    style={{ alignSelf: "flex-start", marginTop: "18px" }}
+                    href="https://altras-demo.vercel.app/"
+                    target="_blank"
+                    rel="noreferrer"
+                    aria-label="Open the ALTRAS live demo"
+                  >
+                    VIEW LIVE DEMO <span>↗</span>
+                  </a>
+                )}
               </article>
             ))}
           </div>
