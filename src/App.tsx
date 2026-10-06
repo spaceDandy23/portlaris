@@ -239,6 +239,18 @@ export default function Home() {
                     VIEW LIVE DEMO <span>↗</span>
                   </a>
                 )}
+                {project.id === "common-canvas" && (
+                  <a
+                    className="textLink"
+                    style={{ alignSelf: "flex-start", marginTop: "18px" }}
+                    href="https://live-cursor-drawing.vercel.app/"
+                    target="_blank"
+                    rel="noreferrer"
+                    aria-label="Open the Common Canvas live demo"
+                  >
+                    VIEW LIVE DEMO <span>↗</span>
+                  </a>
+                )}
               </article>
             ))}
           </div>
