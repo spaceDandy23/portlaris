@@ -21,6 +21,8 @@ export type DevelopmentProject = {
   description: string;
   stack: string[];
   impact: string;
+  liveUrl?: string;
+  linkLabel?: string;
   visible: boolean;
   order: number;
 };
@@ -190,6 +192,8 @@ export const defaultPortfolioContent: PortfolioContent = {
         "Took over an existing production React Native codebase and now maintain and extend the Android side of FDCP's streaming platform. I ship new features, fix production crashes and lifecycle issues, work on video playback and offline downloads, integrate Firebase and Chromecast, handle native integrations, and manage Android releases through Google Play.",
       stack: ["React Native", "Expo", "TypeScript", "Firebase", "Android", "Google Play"],
       impact: "CODEBASE TAKEOVER / FEATURE DELIVERY / PRODUCTION STABILITY / ANDROID RELEASES",
+      liveUrl: "https://play.google.com/store/apps/details?id=com.fdcp.juanflix",
+      linkLabel: "VIEW ON GOOGLE PLAY",
       visible: true,
       order: 0,
     },
@@ -202,8 +206,24 @@ export const defaultPortfolioContent: PortfolioContent = {
         "Built an online educational platform with React, TypeScript, and Supabase. Implemented authentication, PostgreSQL-backed progress tracking, Row Level Security, pre/post assessments, cross-device settings, and a protected researcher results view.",
       stack: ["React", "TypeScript", "Supabase", "PostgreSQL", "RLS", "Vercel"],
       impact: "AUTH / SECURE DATA ACCESS / CROSS-DEVICE PRODUCT",
+      liveUrl: "https://altras-demo.vercel.app/",
+      linkLabel: "VIEW LIVE DEMO",
       visible: true,
       order: 1,
+    },
+    {
+      id: "common-canvas",
+      type: "Realtime collaborative web app",
+      title: "Common Canvas",
+      organization: "Independent portfolio project",
+      description:
+        "Modernized an older collaborative drawing app into an event-driven realtime system. Separated ephemeral cursor traffic from durable stroke events, added batched drawing updates, sequence numbers, cumulative acknowledgements, reconnect recovery, idempotent replay, progressive saved-canvas loading, and persisted catch-up sync backed by MongoDB.",
+      stack: ["React", "Vite", "WebSockets", "Node.js", "Express", "MongoDB", "Render", "Vercel"],
+      impact: "REALTIME PROTOCOL / RELIABILITY / RECONNECT RECOVERY / PERSISTENCE",
+      liveUrl: "https://live-cursor-drawing.vercel.app/",
+      linkLabel: "VIEW LIVE DEMO",
+      visible: true,
+      order: 2,
     },
     {
       id: "agricultural-analysis",
@@ -215,7 +235,7 @@ export const defaultPortfolioContent: PortfolioContent = {
       stack: ["React Native", "Expo", "SQLite", "AI integration"],
       impact: "CROSS-PLATFORM PRODUCT DEVELOPMENT",
       visible: true,
-      order: 2,
+      order: 3,
     },
     {
       id: "it-equipment-borrowing",
@@ -227,7 +247,7 @@ export const defaultPortfolioContent: PortfolioContent = {
       stack: ["Laravel", "Livewire", "MySQL", "SSO", "QR workflow"],
       impact: "INTERNAL OPERATIONS / REQUEST LIFECYCLE / AUDITABILITY",
       visible: true,
-      order: 3,
+      order: 4,
     },
     {
       id: "rfid-attendance",
@@ -239,7 +259,7 @@ export const defaultPortfolioContent: PortfolioContent = {
       stack: ["Laravel", "MariaDB", "REST APIs", "SMS integration"],
       impact: "BACKEND / AUTOMATION / REAL-TIME DATA",
       visible: true,
-      order: 4,
+      order: 5,
     },
   ],
 };
